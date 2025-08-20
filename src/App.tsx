@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
-import { traineesData } from "../trainee-data";
+import { traineesData } from "../trainees";
 import { RankingChart } from "./components/ranking-chart";
 import { ITraineeInfo, ITraineeInfoWithImage } from "./types";
-import bpLogo from "./assets/boys-planet-logo.png";
+import bpLogo from "./assets/boys-planet2-logo.png";
 import { useWindowDimensions } from "./hooks/useWindowDimensions";
 import { Footer } from "./components/Footer";
 import { BiSearchAlt, BiLinkExternal } from "react-icons/bi";
@@ -32,7 +32,10 @@ function App() {
   const addImgToTraineeArray = (trainees: ITraineeInfo[]) => {
     return trainees.map((trainee) => ({
       ...trainee,
-      image: getImageUrl(trainee.id),
+      image: new URL(
+        `./assets/trainees-jpeg/${trainee.imagefile}`,
+        import.meta.url
+      ).href,
     }));
   };
 
@@ -48,17 +51,24 @@ function App() {
   };
 
   const traineesSortedByMostRecentRank = useMemo(() => {
-    const ep5eliminatedTrainees = traineesData.filter(
-      (trainee) => trainee.ep5 === -1
+    const ep6eliminatedTrainees = traineesData.filter(
+      (trainee) => trainee.ep6 === -1
     );
 
     const ep8eliminatedTrainees = traineesData
       .filter((trainee) => trainee.ep8 > 28)
       .sort((item1, item2) => item1.ep8 - item2.ep8);
 
+    const ep9eliminatedTrainees = traineesData
+      .filter((trainee) => trainee.ep9 > 28)
+      .sort((item1, item2) => item1.ep9 - item2.ep9);
+
     const ep11eliminatedTrainees = traineesData
       .filter((trainee) => trainee.ep11 > 18)
       .sort((item1, item2) => item1.ep11 - item2.ep11);
+    const ep12eliminatedTrainees = traineesData
+      .filter((trainee) => trainee.ep12 > 18)
+      .sort((item1, item2) => item1.ep12 - item2.ep12);
 
     const survivedTrainees = traineesData.filter(
       (trainee) => trainee[LATEST_EP_WITH_RANKINGS] !== -1
@@ -71,9 +81,11 @@ function App() {
 
     return [
       ...survivedTrainees,
+      ...ep12eliminatedTrainees,
       ...ep11eliminatedTrainees,
+      ...ep9eliminatedTrainees,
       ...ep8eliminatedTrainees,
-      ...ep5eliminatedTrainees,
+      ...ep6eliminatedTrainees,
     ];
   }, [traineesData]);
 
@@ -135,7 +147,6 @@ function App() {
       currentTrainee.ep2,
       currentTrainee.ep3,
       -1,
-      currentTrainee.ep5,
       currentTrainee.ep6,
       -1,
       currentTrainee.ep8,
@@ -146,22 +157,6 @@ function App() {
     ],
     [currentTrainee]
   );
-
-  // const getWeiboInfo = async (url?: string) => {
-  //   setLoading(true);
-  //   if (url) {
-  //     axios
-  //       .get(`https://boys-planet-api.onrender.com/wb_followers?url=${url}`, {})
-  //       .then((response) => {
-  //         setSupertopicFollowers(response.data.wb_supertopic);
-  //         setLoading(false);
-  //       })
-  //       .catch((error) => {
-  //         console.error(error);
-  //         setLoading(false);
-  //       });
-  //   }
-  // };
 
   const handleClickTraineeRow = (trainee: ITraineeInfoWithImage) => {
     setCurrentTrainee(trainee);
@@ -225,13 +220,27 @@ function App() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          backgroundColor: "#5825ae",
-          background:
-            "radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%)",
           height: 150,
           width: "100%",
+          backgroundColor: "#070707ff",
+          background:
+            "radial-gradient(ellipse at bottom, #000000 0%, #0a0a0a 100%)",
         }}
       >
+        {/* Stars Layer */}
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            background:
+              'transparent url(\'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><circle cx="10" cy="10" r="1" fill="white" /><circle cx="50" cy="70" r="1" fill="white" /><circle cx="80" cy="20" r="1" fill="white" /></svg>\') repeat',
+            opacity: 0.5,
+            pointerEvents: "none",
+          }}
+        />
         <img key={currentTrainee.id} style={{ height: "75%" }} src={bpLogo} />
       </div>
       <div
@@ -246,7 +255,7 @@ function App() {
         <div style={{ flex: 1 }}>
           <RankingChart
             rankings={TRAINEE_RANK_ARRAY}
-            isGlobal={currentTrainee.group === "G"}
+            isGlobal={currentTrainee.group === "C"}
           />
           <div
             className="trainee_card"
@@ -277,7 +286,7 @@ function App() {
                 <div
                   style={{
                     backgroundColor:
-                      currentTrainee.group === "G" ? "#dc7cb0" : "#7fcaeb",
+                      currentTrainee.group === "C" ? "#dc7cb0" : "#7fcaeb",
                   }}
                   className="trainee_group_circle"
                 >
@@ -314,7 +323,7 @@ function App() {
                     </a>
                   )}
                   <a
-                    href={`https://service.mnetplus.world/boysplanet/en/artist/${currentTrainee.id}`}
+                    href={currentTrainee.profileurl}
                     target="_blank"
                     onClick={() =>
                       amplitude.track(
@@ -333,7 +342,7 @@ function App() {
               {generateTraineeStarRanks(
                 currentTrainee?.star_rank1,
                 currentTrainee?.star_rank2,
-                currentTrainee.group === "G"
+                currentTrainee.group === "C"
               )}
               <div
                 style={{
@@ -350,7 +359,7 @@ function App() {
                     fontSize: isMobileOrTablet ? 10 : 15,
                   }}
                 >
-                  <em>"{currentTrainee.phrase}"</em>
+                  <em>"{currentTrainee.subheading}"</em>
                 </p>
               </div>
               <div
@@ -372,7 +381,7 @@ function App() {
                 <div className="trainee_card_column">
                   <p style={{ fontSize: isMobileOrTablet ? 11 : 16 }}>
                     <b style={{ color: "#5a5a5a" }}>Birthdate:</b>{" "}
-                    {currentTrainee.dob}
+                    {currentTrainee.birthday}
                   </p>
                   <p style={{ fontSize: isMobileOrTablet ? 11 : 16 }}>
                     <b style={{ color: "#5a5a5a" }}>Height:</b>{" "}
@@ -384,7 +393,7 @@ function App() {
                   </p>
                   <p style={{ fontSize: isMobileOrTablet ? 11 : 16 }}>
                     <b style={{ color: "#5a5a5a" }}>Specialty:</b>{" "}
-                    {currentTrainee.good_at}
+                    {currentTrainee.specialty}
                   </p>
                   {currentTrainee.eliminated_ep !== -1 && (
                     <p style={{ fontSize: isMobileOrTablet ? 11 : 16 }}>
@@ -464,7 +473,7 @@ function App() {
                       {item.name}
                     </td>
                     <td>{item.group}</td>
-                    <td>{item.company}</td>
+                    <td>{item.agency}</td>
                     <td>{item.ep1}</td>
                     <td>
                       <div className="ranking_div">
