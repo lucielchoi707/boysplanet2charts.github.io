@@ -1,6 +1,6 @@
 # Boys Planet2 Rankings
 
-<img src="https://boysplanetranking.netlify.app/website-image.jpg" alt="example image">
+![example](public/website-image.jpg)
 
 > Interactive chart for MNET Boys Planet 2
 
