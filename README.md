@@ -10,6 +10,5 @@ Boys Planet 2 Rankings is a website made with React, TypeScript and Recharts. Th
 
 - Chart with rank per episode
 - Star ratings
-- Weibo supertopic link (not all trainees have)
 - MNET official page link
 - Trainee basic information: company, group, birthdate, height, etc
