@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { traineesData } from "../trainees";
 import { RankingChart } from "./components/ranking-chart";
-import { ITraineeInfo, ITraineeInfoWithImage } from "./types";
+import { ITraineeInfo } from "./types";
 import bpLogo from "./assets/boys-planet2-logo.png";
 import { useWindowDimensions } from "./hooks/useWindowDimensions";
 import { Footer } from "./components/Footer";
@@ -9,27 +9,26 @@ import { BiSearchAlt, BiLinkExternal } from "react-icons/bi";
 import { RiWeiboFill } from "react-icons/ri";
 import { MdStars } from "react-icons/md";
 import { BsArrowRightShort } from "react-icons/bs";
-
 import * as amplitude from "@amplitude/analytics-browser";
 
-const LATEST_EP_WITH_RANKINGS = "ep12";
+// const LATEST_EP_WITH_RANKINGS = "ep5";
+type EpisodeKey = "ep1" | "ep2" | "ep3" | "ep5";
+const LATEST_EP_WITH_RANKINGS: EpisodeKey = "ep5";
 
-function getImageUrl(traineeId: number) {
-  return new URL(`./assets/trainees-jpeg/${traineeId}.jpg`, import.meta.url)
-    .href;
-}
+// Inline extension type instead of ITraineeInfoWithImage
+type TraineeWithImage = ITraineeInfo & { image: string };
 
 function App() {
   const { isMobileOrTablet } = useWindowDimensions();
-
-  // const [supertopicFollowers, setSupertopicFollowers] = useState();
-  // const [loading, setLoading] = useState<boolean>();
 
   useEffect(() => {
     amplitude.init(import.meta.env.VITE_AMPLITUDE_KEY);
   }, []);
 
-  const addImgToTraineeArray = (trainees: ITraineeInfo[]) => {
+  // Precompute image once and keep using currentTrainee.image
+  const addImgToTraineeArray = (
+    trainees: ITraineeInfo[]
+  ): TraineeWithImage[] => {
     return trainees.map((trainee) => ({
       ...trainee,
       image: new URL(
@@ -40,65 +39,59 @@ function App() {
   };
 
   const renderTraineeEmojiAccordingToRank = (rank: number) => {
-    if (rank === 1) {
-      return "👑";
-    }
-    if (rank > 1 && rank < 10) {
-      return "⭐";
-    }
-
+    if (rank === 1) return "👑";
+    if (rank > 1 && rank < 10) return "⭐";
     return "";
   };
 
   const traineesSortedByMostRecentRank = useMemo(() => {
-    const ep6eliminatedTrainees = traineesData.filter(
-      (trainee) => trainee.ep6 === -1
-    );
+    // const ep6eliminatedTrainees = traineesData.filter((t) => t.ep6 === -1);
 
-    const ep8eliminatedTrainees = traineesData
-      .filter((trainee) => trainee.ep8 > 28)
-      .sort((item1, item2) => item1.ep8 - item2.ep8);
+    // const ep8eliminatedTrainees = traineesData
+    //   .filter((t) => t.ep8 > 28)
+    //   .sort((a, b) => a.ep8 - b.ep8);
 
-    const ep9eliminatedTrainees = traineesData
-      .filter((trainee) => trainee.ep9 > 28)
-      .sort((item1, item2) => item1.ep9 - item2.ep9);
+    // const ep9eliminatedTrainees = traineesData
+    //   .filter((t) => t.ep9 > 28)
+    //   .sort((a, b) => a.ep9 - b.ep9);
 
-    const ep11eliminatedTrainees = traineesData
-      .filter((trainee) => trainee.ep11 > 18)
-      .sort((item1, item2) => item1.ep11 - item2.ep11);
-    const ep12eliminatedTrainees = traineesData
-      .filter((trainee) => trainee.ep12 > 18)
-      .sort((item1, item2) => item1.ep12 - item2.ep12);
+    // const ep11eliminatedTrainees = traineesData
+    //   .filter((t) => t.ep11 > 18)
+    //   .sort((a, b) => a.ep11 - b.ep11);
+
+    // const ep12eliminatedTrainees = traineesData
+    //   .filter((t) => t.ep12 > 18)
+    //   .sort((a, b) => a.ep12 - b.ep12);
 
     const survivedTrainees = traineesData.filter(
-      (trainee) => trainee[LATEST_EP_WITH_RANKINGS] !== -1
+      (t) => t[LATEST_EP_WITH_RANKINGS] !== -1
     );
 
     survivedTrainees.sort(
-      (item1, item2) =>
-        item1[LATEST_EP_WITH_RANKINGS] - item2[LATEST_EP_WITH_RANKINGS]
+      (a, b) => a[LATEST_EP_WITH_RANKINGS] - b[LATEST_EP_WITH_RANKINGS]
     );
 
     return [
       ...survivedTrainees,
-      ...ep12eliminatedTrainees,
-      ...ep11eliminatedTrainees,
-      ...ep9eliminatedTrainees,
-      ...ep8eliminatedTrainees,
-      ...ep6eliminatedTrainees,
+      // ...ep12eliminatedTrainees,
+      // ...ep11eliminatedTrainees,
+      // ...ep9eliminatedTrainees,
+      // ...ep8eliminatedTrainees,
+      // ...ep6eliminatedTrainees,
     ];
   }, [traineesData]);
 
-  const traineesWithImage: ITraineeInfoWithImage[] = useMemo(
+  // Attach image once to the sorted list
+  const traineesWithImage: TraineeWithImage[] = useMemo(
     () => addImgToTraineeArray(traineesSortedByMostRecentRank),
     [traineesSortedByMostRecentRank]
   );
 
-  const [currentTrainee, setCurrentTrainee] = useState<ITraineeInfoWithImage>(
+  const [currentTrainee, setCurrentTrainee] = useState<TraineeWithImage>(
     traineesWithImage[0]
   );
-
-  const [filteredTrainees, setFilteredTrainees] = useState(traineesWithImage);
+  const [filteredTrainees, setFilteredTrainees] =
+    useState<TraineeWithImage[]>(traineesWithImage);
 
   const generateRankDifference = (rank1: number, rank2: number) => {
     const isRankUnavailable = rank2 === -1;
@@ -106,10 +99,7 @@ function App() {
     const noDifference = difference === 0;
     const higher = difference > 0;
 
-    if (isRankUnavailable) {
-      return "";
-    }
-
+    if (isRankUnavailable) return "";
     if (noDifference) {
       return <p style={{ color: "#9eada3", fontSize: 14 }}>{`(-) `}</p>;
     }
@@ -118,7 +108,6 @@ function App() {
         <p style={{ color: "#37f075", fontSize: 14 }}>{`(▲ ${difference})`}</p>
       );
     }
-
     return (
       <p style={{ color: "#fc1c03", fontSize: 14 }}>{`(▼ ${difference})`}</p>
     );
@@ -126,13 +115,11 @@ function App() {
 
   const handleSearchTrainee = (input: string) => {
     const formattedInput = input.replace(" ", "").toLowerCase();
-
     if (formattedInput) {
       const newTrainees = traineesWithImage.filter((trainee) => {
         const formattedTraineeName = trainee.name
           .replace(/\s/g, "")
           .toLowerCase();
-
         return formattedTraineeName.includes(formattedInput);
       });
       setFilteredTrainees(newTrainees);
@@ -147,23 +134,24 @@ function App() {
       currentTrainee.ep2,
       currentTrainee.ep3,
       -1,
-      currentTrainee.ep6,
-      -1,
-      currentTrainee.ep8,
-      currentTrainee.ep9,
-      -1,
-      currentTrainee.ep11,
-      currentTrainee.ep12,
+      currentTrainee.ep5,
+      // currentTrainee.ep6,
+      // -1,
+      // currentTrainee.ep8,
+      // currentTrainee.ep9,
+      // -1,
+      // currentTrainee.ep11,
+      // currentTrainee.ep12,
     ],
     [currentTrainee]
   );
 
-  const handleClickTraineeRow = (trainee: ITraineeInfoWithImage) => {
+  const handleClickTraineeRow = (trainee: TraineeWithImage) => {
     setCurrentTrainee(trainee);
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   };
 
-  const handleMouseEnterTraineeRow = (trainee: ITraineeInfoWithImage) => {
+  const handleMouseEnterTraineeRow = (trainee: TraineeWithImage) => {
     !isMobileOrTablet && setCurrentTrainee(trainee);
     amplitude.track("Trainee Row Mouse Enter", trainee);
   };
@@ -174,7 +162,6 @@ function App() {
     isGlobal?: boolean
   ) => {
     const iconColor = isGlobal ? "#e6497c" : "#383d9e";
-
     if (rank1 !== undefined && rank2 !== undefined) {
       return (
         <div
@@ -194,7 +181,7 @@ function App() {
           ) : (
             Array(rank1)
               .fill(0)
-              .map(() => <MdStars size={18} color={iconColor} />)
+              .map((_, i) => <MdStars key={i} size={18} color={iconColor} />)
           )}
           <BsArrowRightShort size={18} />
           {rank2 === 0 ? (
@@ -206,7 +193,7 @@ function App() {
           ) : (
             Array(rank2)
               .fill(0)
-              .map(() => <MdStars size={18} color={iconColor} />)
+              .map((_, i) => <MdStars key={i} size={18} color={iconColor} />)
           )}
         </div>
       );
@@ -225,24 +212,24 @@ function App() {
           backgroundColor: "#070707ff",
           background:
             "radial-gradient(ellipse at bottom, #000000 0%, #0a0a0a 100%)",
+          position: "relative",
+          overflow: "hidden",
         }}
       >
         {/* Stars Layer */}
         <div
           style={{
             position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
+            inset: 0,
             background:
               'transparent url(\'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><circle cx="10" cy="10" r="1" fill="white" /><circle cx="50" cy="70" r="1" fill="white" /><circle cx="80" cy="20" r="1" fill="white" /></svg>\') repeat',
             opacity: 0.5,
             pointerEvents: "none",
           }}
         />
-        <img key={currentTrainee.id} style={{ height: "75%" }} src={bpLogo} />
+        <img key={currentTrainee.name} style={{ height: "75%" }} src={bpLogo} />
       </div>
+
       <div
         style={{
           flexDirection: isMobileOrTablet ? "column" : "row",
@@ -257,6 +244,7 @@ function App() {
             rankings={TRAINEE_RANK_ARRAY}
             isGlobal={currentTrainee.group === "C"}
           />
+
           <div
             className="trainee_card"
             style={{
@@ -294,7 +282,9 @@ function App() {
                 </div>
                 <p>
                   {renderTraineeEmojiAccordingToRank(
-                    currentTrainee[LATEST_EP_WITH_RANKINGS]
+                    currentTrainee[
+                      LATEST_EP_WITH_RANKINGS as keyof ITraineeInfo
+                    ] as number
                   )}
                 </p>
                 <div
@@ -305,23 +295,6 @@ function App() {
                     gap: 10,
                   }}
                 >
-                  {currentTrainee.wb_supertopic && (
-                    <a
-                      className="external_link_icon"
-                      href={currentTrainee.wb_supertopic}
-                      onClick={() =>
-                        amplitude.track(
-                          "Weibo Supertopic Clicked",
-                          currentTrainee
-                        )
-                      }
-                      target="_blank"
-                      style={{ fontSize: isMobileOrTablet ? 12 : 18 }}
-                    >
-                      <RiWeiboFill size={isMobileOrTablet ? 18 : 24} />
-                      超话
-                    </a>
-                  )}
                   <a
                     href={currentTrainee.profileurl}
                     target="_blank"
@@ -339,11 +312,13 @@ function App() {
                   </a>
                 </div>
               </div>
+
               {generateTraineeStarRanks(
                 currentTrainee?.star_rank1,
                 currentTrainee?.star_rank2,
                 currentTrainee.group === "C"
               )}
+
               <div
                 style={{
                   display: "flex",
@@ -362,6 +337,7 @@ function App() {
                   <em>"{currentTrainee.subheading}"</em>
                 </p>
               </div>
+
               <div
                 style={{
                   display: "flex",
@@ -406,6 +382,7 @@ function App() {
             </div>
           </div>
         </div>
+
         <div
           style={{
             display: "flex",
@@ -418,12 +395,7 @@ function App() {
         >
           <div className="search_bar_container">
             <div className="search_bar">
-              <div
-                className="pop-in"
-                style={{
-                  display: "flex",
-                }}
-              >
+              <div className="pop-in" style={{ display: "flex" }}>
                 <BiSearchAlt color="#b4b4b4" />
               </div>
               <input
@@ -434,6 +406,7 @@ function App() {
               />
             </div>
           </div>
+
           <div className="fixed_header">
             <table>
               <div className="fade_div" />
@@ -446,11 +419,11 @@ function App() {
                   <th>EP 2</th>
                   <th>EP 3</th>
                   <th>EP 5</th>
-                  <th>EP 6</th>
+                  {/* <th>EP 6</th>
                   <th>EP 8</th>
                   <th>EP 9</th>
                   <th>EP 11</th>
-                  <th>EP 12</th>
+                  <th>EP 12</th> */}
                 </tr>
               </thead>
               <tbody>
@@ -458,18 +431,22 @@ function App() {
                   <tr
                     onMouseEnter={() => handleMouseEnterTraineeRow(item)}
                     onClick={() => handleClickTraineeRow(item)}
-                    key={item.id}
+                    key={item.name}
                     style={{
                       position: "relative",
                       zIndex:
-                        item[LATEST_EP_WITH_RANKINGS] === 93 ? 1 : "inherit",
+                        item[LATEST_EP_WITH_RANKINGS as keyof ITraineeInfo] ===
+                        93
+                          ? 1
+                          : "inherit",
                     }}
                   >
                     <td>
                       {renderTraineeEmojiAccordingToRank(
-                        item[LATEST_EP_WITH_RANKINGS]
-                      )}
-
+                        item[
+                          LATEST_EP_WITH_RANKINGS as keyof ITraineeInfo
+                        ] as number
+                      )}{" "}
                       {item.name}
                     </td>
                     <td>{item.group}</td>
@@ -487,7 +464,6 @@ function App() {
                         <p>{item.ep3 === -1 ? "-" : item.ep3}</p>
                       </div>
                     </td>
-
                     <td>
                       <div className="ranking_div">
                         {generateRankDifference(
@@ -497,8 +473,7 @@ function App() {
                         <p>{item.ep5 === -1 ? "-" : item.ep5}</p>
                       </div>
                     </td>
-
-                    <td>
+                    {/* <td>
                       <div className="ranking_div">
                         {generateRankDifference(item.ep5, item.ep6)}
                         <p>{item.ep6 === -1 ? "-" : item.ep6}</p>
@@ -510,7 +485,6 @@ function App() {
                         <p>{item.ep8 === -1 ? "-" : item.ep8}</p>
                       </div>
                     </td>
-
                     <td>
                       <div className="ranking_div">
                         {item.ep9 !== -1 &&
@@ -534,7 +508,7 @@ function App() {
                           generateRankDifference(item.ep11, item.ep12)}
                         <p>{item.ep12 === -1 ? "-" : item.ep12}</p>
                       </div>
-                    </td>
+                    </td> */}
                   </tr>
                 ))}
               </tbody>
@@ -542,6 +516,7 @@ function App() {
           </div>
         </div>
       </div>
+
       <Footer />
     </div>
   );

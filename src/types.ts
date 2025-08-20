@@ -1,24 +1,25 @@
 export interface ITraineeInfo {
-  name: string | null;
-  nickname: string | null;
-  subheading: string | null;
-  birthday: string | null;
-  height: number | null;
-  profileurl: string | null;
-  imagefile: string | null;
-  agency: string | null;
-  hobby: string | null;
-  specialty: string | null;
-  name1: string | null;
-  kc_name: string | null;
-  group: string | null;
-  star_rank1: number | null;
-  ep1: number | null;
-  ep2: number | null;
-  star_rank2: number | null;
-  ep3_master: number | null;
-  ep3: number | null;
-  ep5: number | null;
+  name: string;
+  nickname: string;
+  subheading: string;
+  birthday: string;
+  height: number;
+  profileurl: string;
+  imagefile: string;
+  agency: string;
+  hobby: string ;
+  specialty: string ;
+  name1: string;
+  kc_name: string ;
+  group: string ;
+  star_rank1: number ;
+  ep1: number ;
+  ep2: number ;
+  star_rank2: number ;
+  ep3_master: number ;
+  ep3: number ;
+  ep5: number ;
+// NOTE: EP6–EP12 are not out yet; keep them nullable and don’t use them in UI
   ep6: number | null;
   ep8: number | null;
   ep9: number | null;
@@ -27,6 +28,3 @@ export interface ITraineeInfo {
   eliminated_ep: number | null;
 }
 
-export interface ITraineeInfoWithImage extends ITraineeInfo {
-  image: string;
-}
