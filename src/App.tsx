@@ -201,19 +201,27 @@ function App() {
   };
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", height: "100vh" }}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        minHeight: "150px",
+        width: "100%",
+      }}
+    >
       <div
         style={{
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          height: 150,
+          height: "20vh",
+          minHeight: "120px",
           width: "100%",
           backgroundColor: "#070707ff",
           background:
             "radial-gradient(ellipse at bottom, #000000 0%, #0a0a0a 100%)",
           position: "relative",
-          overflow: "hidden",
+          overflow: "visible",
         }}
       >
         {/* Stars Layer */}
