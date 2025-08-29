@@ -12,8 +12,8 @@ import { BsArrowRightShort } from "react-icons/bs";
 import * as amplitude from "@amplitude/analytics-browser";
 
 // const LATEST_EP_WITH_RANKINGS = "ep5";
-type EpisodeKey = "ep1" | "ep2" | "ep3" | "ep5";
-const LATEST_EP_WITH_RANKINGS: EpisodeKey = "ep5";
+type EpisodeKey = "ep1" | "ep2" | "ep3" | "ep5" | "ep7";
+const LATEST_EP_WITH_RANKINGS: EpisodeKey = "ep7";
 
 // Inline extension type instead of ITraineeInfoWithImage
 type TraineeWithImage = ITraineeInfo & { image: string };
@@ -45,40 +45,16 @@ function App() {
   };
 
   const traineesSortedByMostRecentRank = useMemo(() => {
-    // const ep6eliminatedTrainees = traineesData.filter((t) => t.ep6 === -1);
+    const survivedTrainees = traineesData
+      .filter((t) => t[LATEST_EP_WITH_RANKINGS] !== -1)
+      .sort((a, b) => a[LATEST_EP_WITH_RANKINGS] - b[LATEST_EP_WITH_RANKINGS]);
 
-    // const ep8eliminatedTrainees = traineesData
-    //   .filter((t) => t.ep8 > 28)
-    //   .sort((a, b) => a.ep8 - b.ep8);
+    // EP5 eliminated: didn’t receive a rank in EP5
+    const ep5eliminatedTrainees = traineesData
+      .filter((t) => t.ep7 === -1)
+      .sort((a, b) => (a.name > b.name ? 1 : -1)); // or by agency, etc.
 
-    // const ep9eliminatedTrainees = traineesData
-    //   .filter((t) => t.ep9 > 28)
-    //   .sort((a, b) => a.ep9 - b.ep9);
-
-    // const ep11eliminatedTrainees = traineesData
-    //   .filter((t) => t.ep11 > 18)
-    //   .sort((a, b) => a.ep11 - b.ep11);
-
-    // const ep12eliminatedTrainees = traineesData
-    //   .filter((t) => t.ep12 > 18)
-    //   .sort((a, b) => a.ep12 - b.ep12);
-
-    const survivedTrainees = traineesData.filter(
-      (t) => t[LATEST_EP_WITH_RANKINGS] !== -1
-    );
-
-    survivedTrainees.sort(
-      (a, b) => a[LATEST_EP_WITH_RANKINGS] - b[LATEST_EP_WITH_RANKINGS]
-    );
-
-    return [
-      ...survivedTrainees,
-      // ...ep12eliminatedTrainees,
-      // ...ep11eliminatedTrainees,
-      // ...ep9eliminatedTrainees,
-      // ...ep8eliminatedTrainees,
-      // ...ep6eliminatedTrainees,
-    ];
+    return [...survivedTrainees, ...ep5eliminatedTrainees];
   }, [traineesData]);
 
   // Attach image once to the sorted list
@@ -135,7 +111,7 @@ function App() {
       currentTrainee.ep3,
       -1,
       currentTrainee.ep5,
-      // currentTrainee.ep6,
+      currentTrainee.ep7,
       // -1,
       // currentTrainee.ep8,
       // currentTrainee.ep9,
@@ -159,45 +135,48 @@ function App() {
   const generateTraineeStarRanks = (
     rank1?: number,
     rank2?: number,
-    isGlobal?: boolean
+    rank5?: number,
+    rank7?: number,
+    isC?: boolean // only used for color theme
   ) => {
-    const iconColor = isGlobal ? "#e6497c" : "#383d9e";
-    if (rank1 !== undefined && rank2 !== undefined) {
-      return (
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-            paddingBottom: 20,
-          }}
-        >
-          {rank1 === 0 ? (
-            <strong
-              style={{ color: iconColor, fontSize: isMobileOrTablet ? 12 : 16 }}
-            >
-              0 STAR
-            </strong>
-          ) : (
-            Array(rank1)
-              .fill(0)
-              .map((_, i) => <MdStars key={i} size={18} color={iconColor} />)
-          )}
-          <BsArrowRightShort size={18} />
-          {rank2 === 0 ? (
-            <strong
-              style={{ color: iconColor, fontSize: isMobileOrTablet ? 12 : 16 }}
-            >
-              0 STAR
-            </strong>
-          ) : (
-            Array(rank2)
-              .fill(0)
-              .map((_, i) => <MdStars key={i} size={18} color={iconColor} />)
-          )}
-        </div>
-      );
-    }
+    const iconColor = isC ? "#e6497c" : "#383d9e";
+    const fmt = (v?: number) => (typeof v === "number" ? v : 0); // fallback so K/C both show 4 steps
+
+    const steps = [fmt(rank1), fmt(rank2), fmt(rank5), fmt(rank7)];
+
+    return (
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+          paddingBottom: 20,
+        }}
+      >
+        {steps.map((n, i) => (
+          <span
+            key={i}
+            style={{ display: "inline-flex", alignItems: "center" }}
+          >
+            {n === 0 ? (
+              <strong
+                style={{
+                  color: iconColor,
+                  fontSize: isMobileOrTablet ? 12 : 16,
+                }}
+              >
+                0 STAR
+              </strong>
+            ) : (
+              Array(n)
+                .fill(0)
+                .map((_, j) => <MdStars key={j} size={18} color={iconColor} />)
+            )}
+            {i < steps.length - 1 && <BsArrowRightShort size={18} />}
+          </span>
+        ))}
+      </div>
+    );
   };
 
   return (
@@ -324,6 +303,8 @@ function App() {
               {generateTraineeStarRanks(
                 currentTrainee?.star_rank1,
                 currentTrainee?.star_rank2,
+                currentTrainee?.star_rank5,
+                currentTrainee?.star_rank7,
                 currentTrainee.group === "C"
               )}
 
@@ -427,8 +408,8 @@ function App() {
                   <th>EP 2</th>
                   <th>EP 3</th>
                   <th>EP 5</th>
-                  {/* <th>EP 6</th>
-                  <th>EP 8</th>
+                  <th>EP 7</th>
+                  {/*<th>EP 8</th>
                   <th>EP 9</th>
                   <th>EP 11</th>
                   <th>EP 12</th> */}
@@ -481,12 +462,13 @@ function App() {
                         <p>{item.ep5 === -1 ? "-" : item.ep5}</p>
                       </div>
                     </td>
-                    {/* <td>
+                    <td>
                       <div className="ranking_div">
-                        {generateRankDifference(item.ep5, item.ep6)}
-                        <p>{item.ep6 === -1 ? "-" : item.ep6}</p>
+                        {generateRankDifference(item.ep5, item.ep7)}
+                        <p>{item.ep7 === -1 ? "-" : item.ep7}</p>
                       </div>
                     </td>
+                    {/*
                     <td>
                       <div className="ranking_div">
                         {generateRankDifference(item.ep6, item.ep8)}
