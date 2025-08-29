@@ -137,12 +137,21 @@ function App() {
     rank2?: number,
     rank5?: number,
     rank7?: number,
-    isC?: boolean // only used for color theme
+    isC?: boolean
   ) => {
     const iconColor = isC ? "#e6497c" : "#383d9e";
-    const fmt = (v?: number) => (typeof v === "number" ? v : 0); // fallback so K/C both show 4 steps
 
-    const steps = [fmt(rank1), fmt(rank2), fmt(rank5), fmt(rank7)];
+    // normalize: -1 or undefined/null = missing, else number
+    const normalize = (v?: number) => (v == null || v === -1 ? null : v);
+
+    const steps = [
+      normalize(rank1),
+      normalize(rank2),
+      normalize(rank5),
+      normalize(rank7),
+    ].filter((v) => v !== null); // drop missing stages completely
+
+    if (steps.length === 0) return null;
 
     return (
       <div
