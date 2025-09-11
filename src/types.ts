@@ -22,8 +22,9 @@ export interface ITraineeInfo {
   star_rank5: number;
   ep7: number;
   star_rank7: number;
-  // NOTE: EP8–EP12 are not out yet; keep them nullable and don’t use them in UI
-  ep8: number | null;
+  ep8: number;
+  star_rank8: number;
+  // NOTE: EP9–EP12 are not out yet; keep them nullable and don’t use them in UI
   ep9: number | null;
   ep11: number | null;
   ep12: number | null;

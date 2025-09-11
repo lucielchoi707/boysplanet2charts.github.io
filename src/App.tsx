@@ -12,8 +12,8 @@ import { BsArrowRightShort } from "react-icons/bs";
 import * as amplitude from "@amplitude/analytics-browser";
 
 // const LATEST_EP_WITH_RANKINGS = "ep5";
-type EpisodeKey = "ep1" | "ep2" | "ep3" | "ep5" | "ep7";
-const LATEST_EP_WITH_RANKINGS: EpisodeKey = "ep7";
+type EpisodeKey = "ep1" | "ep2" | "ep3" | "ep5" | "ep7" | "ep8";
+const LATEST_EP_WITH_RANKINGS: EpisodeKey = "ep8";
 
 // Inline extension type instead of ITraineeInfoWithImage
 type TraineeWithImage = ITraineeInfo & { image: string };
@@ -53,8 +53,15 @@ function App() {
     const ep5eliminatedTrainees = traineesData
       .filter((t) => t.ep7 === -1)
       .sort((a, b) => (a.name > b.name ? 1 : -1)); // or by agency, etc.
-
-    return [...survivedTrainees, ...ep5eliminatedTrainees];
+    // EP8 eliminated: didn’t receive a rank in EP9 [Update in next episode]
+    const ep8eliminatedTrainees = traineesData
+      .filter((t) => t.ep8 === -1)
+      .sort((a, b) => (a.name > b.name ? 1 : -1)); // or by agency, etc.
+    return [
+      ...survivedTrainees,
+      ...ep5eliminatedTrainees,
+      ...ep8eliminatedTrainees,
+    ];
   }, [traineesData]);
 
   // Attach image once to the sorted list
@@ -111,9 +118,9 @@ function App() {
       currentTrainee.ep3,
       -1,
       currentTrainee.ep5,
+      -1,
       currentTrainee.ep7,
-      // -1,
-      // currentTrainee.ep8,
+      currentTrainee.ep8,
       // currentTrainee.ep9,
       // -1,
       // currentTrainee.ep11,
@@ -137,6 +144,7 @@ function App() {
     rank2?: number,
     rank5?: number,
     rank7?: number,
+    rank8?: number,
     isC?: boolean
   ) => {
     const iconColor = isC ? "#e6497c" : "#383d9e";
@@ -149,6 +157,7 @@ function App() {
       normalize(rank2),
       normalize(rank5),
       normalize(rank7),
+      normalize(rank8),
     ].filter((v) => v !== null); // drop missing stages completely
 
     if (steps.length === 0) return null;
@@ -314,6 +323,7 @@ function App() {
                 currentTrainee?.star_rank2,
                 currentTrainee?.star_rank5,
                 currentTrainee?.star_rank7,
+                currentTrainee?.star_rank8,
                 currentTrainee.group === "C"
               )}
 
@@ -418,7 +428,8 @@ function App() {
                   <th>EP 3</th>
                   <th>EP 5</th>
                   <th>EP 7</th>
-                  {/*<th>EP 8</th>
+                  <th>EP 8</th>
+                  {/*
                   <th>EP 9</th>
                   <th>EP 11</th>
                   <th>EP 12</th> */}
@@ -464,10 +475,7 @@ function App() {
                     </td>
                     <td>
                       <div className="ranking_div">
-                        {generateRankDifference(
-                          item.ep3 === -1 ? item.ep2 : item.ep3,
-                          item.ep5
-                        )}
+                        {generateRankDifference(item.ep3, item.ep5)}
                         <p>{item.ep5 === -1 ? "-" : item.ep5}</p>
                       </div>
                     </td>
@@ -477,13 +485,13 @@ function App() {
                         <p>{item.ep7 === -1 ? "-" : item.ep7}</p>
                       </div>
                     </td>
-                    {/*
                     <td>
                       <div className="ranking_div">
-                        {generateRankDifference(item.ep6, item.ep8)}
+                        {generateRankDifference(item.ep7, item.ep8)}
                         <p>{item.ep8 === -1 ? "-" : item.ep8}</p>
                       </div>
                     </td>
+                    {/*
                     <td>
                       <div className="ranking_div">
                         {item.ep9 !== -1 &&
