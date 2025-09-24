@@ -53,26 +53,32 @@ function App() {
   };
 
   const traineesSortedByMostRecentRank = useMemo(() => {
-    const survivedTrainees = traineesData
-      .filter((t) => t[LATEST_EP_WITH_RANKINGS] !== -1)
-      .sort((a, b) => a[LATEST_EP_WITH_RANKINGS] - b[LATEST_EP_WITH_RANKINGS]);
+    const ep5eliminatedTrainees = traineesData.filter(
+      (trainee) => trainee.ep5 === -1
+    );
 
-    // EP5 eliminated: didn’t receive a rank in EP5
-    const ep5eliminatedTrainees = traineesData
-      .filter((t) => t.ep7 === -1)
-      .sort((a, b) => (a.name > b.name ? 1 : -1)); // or by agency, etc.
-    // EP8 eliminated: didn’t receive a rank in EP9 [Update in next episode]
     const ep8eliminatedTrainees = traineesData
-      .filter((t) => t.ep9 === -1)
-      .sort((a, b) => (a.name > b.name ? 1 : -1)); // or by agency, etc.
-    const ep10eliminatedTrainees = traineesData
-      .filter((t) => t.ep10 === -1)
-      .sort((a, b) => (a.name > b.name ? 1 : -1)); // or by agency, etc.
+      .filter((trainee) => trainee.ep8 > 24)
+      .sort((item1, item2) => item1.ep8 - item2.ep8);
+
+    // const ep10eliminatedTrainees = traineesData
+    //   .filter((trainee) => trainee.ep10 > 16)
+    //   .sort((item1, item2) => item1.ep10 - item2.ep10);
+
+    const survivedTrainees = traineesData.filter(
+      (trainee) => trainee[LATEST_EP_WITH_RANKINGS] !== -1
+    );
+
+    survivedTrainees.sort(
+      (item1, item2) =>
+        item1[LATEST_EP_WITH_RANKINGS] - item2[LATEST_EP_WITH_RANKINGS]
+    );
+
     return [
       ...survivedTrainees,
-      ...ep5eliminatedTrainees,
+      // ...ep10eliminatedTrainees,
       ...ep8eliminatedTrainees,
-      ...ep10eliminatedTrainees,
+      ...ep5eliminatedTrainees,
     ];
   }, [traineesData]);
 
