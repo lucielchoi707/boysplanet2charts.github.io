@@ -28,8 +28,8 @@ export const traineesData: ITraineeInfo[] = [
     "ep8": 33,
     "star_rank8": 2,
     "ep9": -1,
+    "ep10": -1,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": 8
 
   },
@@ -60,8 +60,8 @@ export const traineesData: ITraineeInfo[] = [
     "ep8": 44,
     "star_rank8": 2,
     "ep9": -1,
+    "ep10": -1,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": 8
   },
   {
@@ -90,9 +90,9 @@ export const traineesData: ITraineeInfo[] = [
     "star_rank7": 3,
     "ep8": 18,
     "star_rank8": 3,
-    "ep9": -1,
+    "ep9": 2,
+    "ep10": 12,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": -1
   },
   {
@@ -121,9 +121,9 @@ export const traineesData: ITraineeInfo[] = [
     "star_rank7": 2,
     "ep8": 10,
     "star_rank8": 3,
-    "ep9": -1,
+    "ep9": 9,
+    "ep10": 10,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": -1
   },
   {
@@ -152,9 +152,9 @@ export const traineesData: ITraineeInfo[] = [
     "star_rank7": 3,
     "ep8": 6,
     "star_rank8": 3,
-    "ep9": -1,
+    "ep9": 8,
+    "ep10": 8,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": -1
   },
   {
@@ -184,8 +184,8 @@ export const traineesData: ITraineeInfo[] = [
     "ep8": 46,
     "star_rank8": 2,
     "ep9": -1,
+    "ep10": -1,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": 8
   },
   {
@@ -215,8 +215,8 @@ export const traineesData: ITraineeInfo[] = [
     "ep8": 25,
     "star_rank8": 2,
     "ep9": -1,
+    "ep10": -1,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": 8
   },
   {
@@ -246,8 +246,8 @@ export const traineesData: ITraineeInfo[] = [
     "ep8": 26,
     "star_rank8": 2,
     "ep9": -1,
+    "ep10": -1,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": 8
   },
   {
@@ -276,9 +276,9 @@ export const traineesData: ITraineeInfo[] = [
     "star_rank7": 3,
     "ep8": 4,
     "star_rank8": 3,
-    "ep9": -1,
+    "ep9": 20,
+    "ep10": 6,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": -1
   },
   {
@@ -308,8 +308,8 @@ export const traineesData: ITraineeInfo[] = [
     "ep8": 29,
     "star_rank8": 2,
     "ep9": -1,
+    "ep10": -1,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": 8
   },
   {
@@ -338,10 +338,10 @@ export const traineesData: ITraineeInfo[] = [
     "star_rank7": 2,
     "ep8": 21,
     "star_rank8": 3,
-    "ep9": -1,
+    "ep9": 17,
+    "ep10": 23,
     "ep11": -1,
-    "ep12": -1,
-    "eliminated_ep": -1
+    "eliminated_ep": 10
   },
   {
     "name": "HU HAN WEN",
@@ -369,10 +369,10 @@ export const traineesData: ITraineeInfo[] = [
     "star_rank7": 3,
     "ep8": 23,
     "star_rank8": 3,
-    "ep9": -1,
+    "ep9": 12,
+    "ep10": 24,
     "ep11": -1,
-    "ep12": -1,
-    "eliminated_ep": -1
+    "eliminated_ep": 10
   },
   {
     "name": "JANG HAN EUM",
@@ -400,10 +400,10 @@ export const traineesData: ITraineeInfo[] = [
     "star_rank7": 3,
     "ep8": 14,
     "star_rank8": 3,
-    "ep9": -1,
+    "ep9": 6,
+    "ep10": 18,
     "ep11": -1,
-    "ep12": -1,
-    "eliminated_ep": -1
+    "eliminated_ep": 10
   },
   {
     "name": "JO GYE HYEON",
@@ -432,8 +432,8 @@ export const traineesData: ITraineeInfo[] = [
     "ep8": 37,
     "star_rank8": 2,
     "ep9": -1,
+    "ep10": -1,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": 8
   },
   {
@@ -462,9 +462,9 @@ export const traineesData: ITraineeInfo[] = [
     "star_rank7": 3,
     "ep8": 12,
     "star_rank8": 3,
-    "ep9": -1,
+    "ep9": 19,
+    "ep10": 15,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": -1
   },
   {
@@ -494,8 +494,8 @@ export const traineesData: ITraineeInfo[] = [
     "ep8": 47,
     "star_rank8": 2,
     "ep9": -1,
+    "ep10": -1,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": 8
   },
   {
@@ -524,9 +524,9 @@ export const traineesData: ITraineeInfo[] = [
     "star_rank7": 2,
     "ep8": 16,
     "star_rank8": 3,
-    "ep9": -1,
+    "ep9": 11,
+    "ep10": 16,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": -1
   },
   {
@@ -556,8 +556,8 @@ export const traineesData: ITraineeInfo[] = [
     "ep8": 43,
     "star_rank8": 2,
     "ep9": -1,
+    "ep10": -1,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": 8
   },
   {
@@ -586,9 +586,9 @@ export const traineesData: ITraineeInfo[] = [
     "star_rank7": 3,
     "ep8": 7,
     "star_rank8": 3,
-    "ep9": -1,
+    "ep9": 7,
+    "ep10": 4,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": -1
   },
   {
@@ -618,8 +618,8 @@ export const traineesData: ITraineeInfo[] = [
     "ep8": 36,
     "star_rank8": 2,
     "ep9": -1,
+    "ep10": -1,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": 8
   },
   {
@@ -649,8 +649,8 @@ export const traineesData: ITraineeInfo[] = [
     "ep8": 27,
     "star_rank8": 2,
     "ep9": -1,
+    "ep10": -1,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": 8
   },
   {
@@ -679,9 +679,9 @@ export const traineesData: ITraineeInfo[] = [
     "star_rank7": 3,
     "ep8": 11,
     "star_rank8": 3,
-    "ep9": -1,
+    "ep9": 3,
+    "ep10": 13,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": -1
   },
   {
@@ -710,9 +710,9 @@ export const traineesData: ITraineeInfo[] = [
     "star_rank7": 3,
     "ep8": 5,
     "star_rank8": 3,
-    "ep9": -1,
+    "ep9": 24,
+    "ep10": 7,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": -1
   },
   {
@@ -742,8 +742,8 @@ export const traineesData: ITraineeInfo[] = [
     "ep8": 48,
     "star_rank8": 2,
     "ep9": -1,
+    "ep10": -1,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": 8
   },
   {
@@ -773,8 +773,8 @@ export const traineesData: ITraineeInfo[] = [
     "ep8": 45,
     "star_rank8": 2,
     "ep9": -1,
+    "ep10": -1,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": 8
   },
   {
@@ -803,9 +803,9 @@ export const traineesData: ITraineeInfo[] = [
     "star_rank7": 2,
     "ep8": 3,
     "star_rank8": 3,
-    "ep9": -1,
+    "ep9": 22,
+    "ep10": 3,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": -1
   },
   {
@@ -834,9 +834,9 @@ export const traineesData: ITraineeInfo[] = [
     "star_rank7": 3,
     "ep8": 1,
     "star_rank8": 3,
-    "ep9": -1,
+    "ep9": 4,
+    "ep10": 1,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": -1
   },
   {
@@ -865,10 +865,10 @@ export const traineesData: ITraineeInfo[] = [
     "star_rank7": 2,
     "ep8": 17,
     "star_rank8": 3,
-    "ep9": -1,
+    "ep9": 13,
+    "ep10": 19,
     "ep11": -1,
-    "ep12": -1,
-    "eliminated_ep": -1
+    "eliminated_ep": 10
   },
   {
     "name": "MASATO",
@@ -896,10 +896,10 @@ export const traineesData: ITraineeInfo[] = [
     "star_rank7": 2,
     "ep8": 9,
     "star_rank8": 3,
-    "ep9": -1,
+    "ep9": 16,
+    "ep10": 17,
     "ep11": -1,
-    "ep12": -1,
-    "eliminated_ep": -1
+    "eliminated_ep": 10
   },
   {
     "name": "NA YUN SEO",
@@ -927,10 +927,10 @@ export const traineesData: ITraineeInfo[] = [
     "star_rank7": 3,
     "ep8": 20,
     "star_rank8": 3,
-    "ep9": -1,
+    "ep9": 21,
+    "ep10": 22,
     "ep11": -1,
-    "ep12": -1,
-    "eliminated_ep": -1
+    "eliminated_ep": 10
   },
   {
     "name": "NIAN BO HENG",
@@ -959,8 +959,8 @@ export const traineesData: ITraineeInfo[] = [
     "ep8": 31,
     "star_rank8": 2,
     "ep9": -1,
+    "ep10": -1,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": 8
   },
   {
@@ -989,9 +989,9 @@ export const traineesData: ITraineeInfo[] = [
     "star_rank7": 3,
     "ep8": 24,
     "star_rank8": 3,
-    "ep9": -1,
+    "ep9": 5,
+    "ep10": 14,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": -1
   },
   {
@@ -1020,10 +1020,10 @@ export const traineesData: ITraineeInfo[] = [
     "star_rank7": 3,
     "ep8": 13,
     "star_rank8": 3,
-    "ep9": -1,
+    "ep9": 23,
+    "ep10": 21,
     "ep11": -1,
-    "ep12": -1,
-    "eliminated_ep": -1
+    "eliminated_ep": 10
   },
   {
     "name": "PENG JIN YU",
@@ -1052,8 +1052,8 @@ export const traineesData: ITraineeInfo[] = [
     "ep8": 41,
     "star_rank8": 2,
     "ep9": -1,
+    "ep10": -1,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": 8
   },
   {
@@ -1083,8 +1083,8 @@ export const traineesData: ITraineeInfo[] = [
     "ep8": 32,
     "star_rank8": 2,
     "ep9": -1,
+    "ep10": -1,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": 8
   },
   {
@@ -1114,8 +1114,8 @@ export const traineesData: ITraineeInfo[] = [
     "ep8": 39,
     "star_rank8": 2,
     "ep9": -1,
+    "ep10": -1,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": 8
   },
   {
@@ -1144,10 +1144,10 @@ export const traineesData: ITraineeInfo[] = [
     "star_rank7": 3,
     "ep8": 15,
     "star_rank8": 3,
-    "ep9": -1,
+    "ep9": 15,
+    "ep10": 20,
     "ep11": -1,
-    "ep12": -1,
-    "eliminated_ep": -1
+    "eliminated_ep": 10
   },
   {
     "name": "SUN JIA YANG",
@@ -1176,8 +1176,8 @@ export const traineesData: ITraineeInfo[] = [
     "ep8": 35,
     "star_rank8": 2,
     "ep9": -1,
+    "ep10": -1,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": 8
   },
   {
@@ -1207,8 +1207,8 @@ export const traineesData: ITraineeInfo[] = [
     "ep8": 38,
     "star_rank8": 2,
     "ep9": -1,
+    "ep10": -1,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": 8
   },
   {
@@ -1238,8 +1238,8 @@ export const traineesData: ITraineeInfo[] = [
     "ep8": 28,
     "star_rank8": 2,
     "ep9": -1,
+    "ep10": -1,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": 8
   },
   {
@@ -1269,8 +1269,8 @@ export const traineesData: ITraineeInfo[] = [
     "ep8": 40,
     "star_rank8": 2,
     "ep9": -1,
+    "ep10": -1,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": 8
   },
   {
@@ -1300,8 +1300,8 @@ export const traineesData: ITraineeInfo[] = [
     "ep8": 42,
     "star_rank8": 2,
     "ep9": -1,
+    "ep10": -1,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": 8
   },
   {
@@ -1330,9 +1330,9 @@ export const traineesData: ITraineeInfo[] = [
     "star_rank7": 2,
     "ep8": 8,
     "star_rank8": 3,
-    "ep9": -1,
+    "ep9": 1,
+    "ep10": 11,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": -1
   },
   {
@@ -1362,8 +1362,8 @@ export const traineesData: ITraineeInfo[] = [
     "ep8": 30,
     "star_rank8": 2,
     "ep9": -1,
+    "ep10": -1,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": 8
   },
   {
@@ -1392,9 +1392,9 @@ export const traineesData: ITraineeInfo[] = [
     "star_rank7": 2,
     "ep8": 22,
     "star_rank8": 3,
-    "ep9": -1,
+    "ep9": 10,
+    "ep10": 9,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": -1
   },
   {
@@ -1423,9 +1423,9 @@ export const traineesData: ITraineeInfo[] = [
     "star_rank7": 3,
     "ep8": 19,
     "star_rank8": 3,
-    "ep9": -1,
+    "ep9": 14,
+    "ep10": 5,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": -1
   },
   {
@@ -1455,8 +1455,8 @@ export const traineesData: ITraineeInfo[] = [
     "ep8": 34,
     "star_rank8": 2,
     "ep9": -1,
+    "ep10": -1,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": 8
   },
   {
@@ -1485,9 +1485,9 @@ export const traineesData: ITraineeInfo[] = [
     "star_rank7": 3,
     "ep8": 2,
     "star_rank8": 3,
-    "ep9": -1,
+    "ep9": 18,
+    "ep10": 2,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": -1
   },
   {
@@ -1517,8 +1517,8 @@ export const traineesData: ITraineeInfo[] = [
     "ep8": -1,
     "star_rank8": -1,
     "ep9": -1,
+    "ep10": -1,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": 5
   },
   {
@@ -1548,8 +1548,8 @@ export const traineesData: ITraineeInfo[] = [
     "ep8": -1,
     "star_rank8": -1,
     "ep9": -1,
+    "ep10": -1,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": 5
   },
   {
@@ -1579,8 +1579,8 @@ export const traineesData: ITraineeInfo[] = [
     "ep8": -1,
     "star_rank8": -1,
     "ep9": -1,
+    "ep10": -1,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": 5
   },
   {
@@ -1610,8 +1610,8 @@ export const traineesData: ITraineeInfo[] = [
     "ep8": -1,
     "star_rank8": -1,
     "ep9": -1,
+    "ep10": -1,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": 5
   },
   {
@@ -1641,8 +1641,8 @@ export const traineesData: ITraineeInfo[] = [
     "ep8": -1,
     "star_rank8": -1,
     "ep9": -1,
+    "ep10": -1,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": 5
   },
   {
@@ -1672,8 +1672,8 @@ export const traineesData: ITraineeInfo[] = [
     "ep8": -1,
     "star_rank8": -1,
     "ep9": -1,
+    "ep10": -1,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": 5
   },
   {
@@ -1703,8 +1703,8 @@ export const traineesData: ITraineeInfo[] = [
     "ep8": -1,
     "star_rank8": -1,
     "ep9": -1,
+    "ep10": -1,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": 5
   },
   {
@@ -1734,8 +1734,8 @@ export const traineesData: ITraineeInfo[] = [
     "ep8": -1,
     "star_rank8": -1,
     "ep9": -1,
+    "ep10": -1,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": 5
   },
   {
@@ -1765,8 +1765,8 @@ export const traineesData: ITraineeInfo[] = [
     "ep8": -1,
     "star_rank8": -1,
     "ep9": -1,
+    "ep10": -1,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": 5
   },
   {
@@ -1796,8 +1796,8 @@ export const traineesData: ITraineeInfo[] = [
     "ep8": -1,
     "star_rank8": -1,
     "ep9": -1,
+    "ep10": -1,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": 5
   },
   {
@@ -1827,8 +1827,8 @@ export const traineesData: ITraineeInfo[] = [
     "ep8": -1,
     "star_rank8": -1,
     "ep9": -1,
+    "ep10": -1,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": 5
   },
   {
@@ -1858,8 +1858,8 @@ export const traineesData: ITraineeInfo[] = [
     "ep8": -1,
     "star_rank8": -1,
     "ep9": -1,
+    "ep10": -1,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": 5
   },
   {
@@ -1889,8 +1889,8 @@ export const traineesData: ITraineeInfo[] = [
     "ep8": -1,
     "star_rank8": -1,
     "ep9": -1,
+    "ep10": -1,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": 5
   },
   {
@@ -1920,8 +1920,8 @@ export const traineesData: ITraineeInfo[] = [
     "ep8": -1,
     "star_rank8": -1,
     "ep9": -1,
+    "ep10": -1,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": 5
   },
   {
@@ -1951,8 +1951,8 @@ export const traineesData: ITraineeInfo[] = [
     "ep8": -1,
     "star_rank8": -1,
     "ep9": -1,
+    "ep10": -1,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": 5
   },
   {
@@ -1982,8 +1982,8 @@ export const traineesData: ITraineeInfo[] = [
     "ep8": -1,
     "star_rank8": -1,
     "ep9": -1,
+    "ep10": -1,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": 5
   },
   {
@@ -2013,8 +2013,8 @@ export const traineesData: ITraineeInfo[] = [
     "ep8": -1,
     "star_rank8": -1,
     "ep9": -1,
+    "ep10": -1,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": 5
   },
   {
@@ -2044,8 +2044,8 @@ export const traineesData: ITraineeInfo[] = [
     "ep8": -1,
     "star_rank8": -1,
     "ep9": -1,
+    "ep10": -1,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": 5
   },
   {
@@ -2075,8 +2075,8 @@ export const traineesData: ITraineeInfo[] = [
     "ep8": -1,
     "star_rank8": -1,
     "ep9": -1,
+    "ep10": -1,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": 5
   },
   {
@@ -2106,8 +2106,8 @@ export const traineesData: ITraineeInfo[] = [
     "ep8": -1,
     "star_rank8": -1,
     "ep9": -1,
+    "ep10": -1,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": 5
   },
   {
@@ -2137,8 +2137,8 @@ export const traineesData: ITraineeInfo[] = [
     "ep8": -1,
     "star_rank8": -1,
     "ep9": -1,
+    "ep10": -1,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": 5
   },
   {
@@ -2168,8 +2168,8 @@ export const traineesData: ITraineeInfo[] = [
     "ep8": -1,
     "star_rank8": -1,
     "ep9": -1,
+    "ep10": -1,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": 5
   },
   {
@@ -2199,8 +2199,8 @@ export const traineesData: ITraineeInfo[] = [
     "ep8": -1,
     "star_rank8": -1,
     "ep9": -1,
+    "ep10": -1,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": 5
   },
   {
@@ -2230,8 +2230,8 @@ export const traineesData: ITraineeInfo[] = [
     "ep8": -1,
     "star_rank8": -1,
     "ep9": -1,
+    "ep10": -1,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": 5
   },
   {
@@ -2261,8 +2261,8 @@ export const traineesData: ITraineeInfo[] = [
     "ep8": -1,
     "star_rank8": -1,
     "ep9": -1,
+    "ep10": -1,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": 5
   },
   {
@@ -2292,8 +2292,8 @@ export const traineesData: ITraineeInfo[] = [
     "ep8": -1,
     "star_rank8": -1,
     "ep9": -1,
+    "ep10": -1,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": 5
   },
   {
@@ -2323,8 +2323,8 @@ export const traineesData: ITraineeInfo[] = [
     "ep8": -1,
     "star_rank8": -1,
     "ep9": -1,
+    "ep10": -1,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": 5
   },
   {
@@ -2354,8 +2354,8 @@ export const traineesData: ITraineeInfo[] = [
     "ep8": -1,
     "star_rank8": -1,
     "ep9": -1,
+    "ep10": -1,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": 5
   },
   {
@@ -2385,8 +2385,8 @@ export const traineesData: ITraineeInfo[] = [
     "ep8": -1,
     "star_rank8": -1,
     "ep9": -1,
+    "ep10": -1,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": 5
   },
   {
@@ -2416,8 +2416,8 @@ export const traineesData: ITraineeInfo[] = [
     "ep8": -1,
     "star_rank8": -1,
     "ep9": -1,
+    "ep10": -1,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": 5
   },
   {
@@ -2447,8 +2447,8 @@ export const traineesData: ITraineeInfo[] = [
     "ep8": -1,
     "star_rank8": -1,
     "ep9": -1,
+    "ep10": -1,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": 5
   },
   {
@@ -2478,8 +2478,8 @@ export const traineesData: ITraineeInfo[] = [
     "ep8": -1,
     "star_rank8": -1,
     "ep9": -1,
+    "ep10": -1,
     "ep11": -1,
-    "ep12": -1,
     "eliminated_ep": 5
   }
 ]

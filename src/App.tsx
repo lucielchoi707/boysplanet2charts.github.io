@@ -12,8 +12,16 @@ import { BsArrowRightShort } from "react-icons/bs";
 import * as amplitude from "@amplitude/analytics-browser";
 
 // const LATEST_EP_WITH_RANKINGS = "ep5";
-type EpisodeKey = "ep1" | "ep2" | "ep3" | "ep5" | "ep7" | "ep8";
-const LATEST_EP_WITH_RANKINGS: EpisodeKey = "ep8";
+type EpisodeKey =
+  | "ep1"
+  | "ep2"
+  | "ep3"
+  | "ep5"
+  | "ep7"
+  | "ep8"
+  | "ep9"
+  | "ep10";
+const LATEST_EP_WITH_RANKINGS: EpisodeKey = "ep10";
 
 // Inline extension type instead of ITraineeInfoWithImage
 type TraineeWithImage = ITraineeInfo & { image: string };
@@ -55,12 +63,16 @@ function App() {
       .sort((a, b) => (a.name > b.name ? 1 : -1)); // or by agency, etc.
     // EP8 eliminated: didn’t receive a rank in EP9 [Update in next episode]
     const ep8eliminatedTrainees = traineesData
-      .filter((t) => t.ep8 === -1)
+      .filter((t) => t.ep9 === -1)
+      .sort((a, b) => (a.name > b.name ? 1 : -1)); // or by agency, etc.
+    const ep10eliminatedTrainees = traineesData
+      .filter((t) => t.ep10 === -1)
       .sort((a, b) => (a.name > b.name ? 1 : -1)); // or by agency, etc.
     return [
       ...survivedTrainees,
       ...ep5eliminatedTrainees,
       ...ep8eliminatedTrainees,
+      ...ep10eliminatedTrainees,
     ];
   }, [traineesData]);
 
@@ -121,7 +133,8 @@ function App() {
       -1,
       currentTrainee.ep7,
       currentTrainee.ep8,
-      // currentTrainee.ep9,
+      currentTrainee.ep9,
+      currentTrainee.ep10,
       // -1,
       // currentTrainee.ep11,
       // currentTrainee.ep12,
@@ -429,8 +442,9 @@ function App() {
                   <th>EP 5</th>
                   <th>EP 7</th>
                   <th>EP 8</th>
-                  {/*
                   <th>EP 9</th>
+                  <th>EP 10</th>
+                  {/*
                   <th>EP 11</th>
                   <th>EP 12</th> */}
                 </tr>
@@ -489,6 +503,18 @@ function App() {
                       <div className="ranking_div">
                         {generateRankDifference(item.ep7, item.ep8)}
                         <p>{item.ep8 === -1 ? "-" : item.ep8}</p>
+                      </div>
+                    </td>
+                    <td>
+                      <div className="ranking_div">
+                        {generateRankDifference(item.ep8, item.ep9)}
+                        <p>{item.ep9 === -1 ? "-" : item.ep9}</p>
+                      </div>
+                    </td>
+                    <td>
+                      <div className="ranking_div">
+                        {generateRankDifference(item.ep9, item.ep10)}
+                        <p>{item.ep10 === -1 ? "-" : item.ep10}</p>
                       </div>
                     </td>
                     {/*
