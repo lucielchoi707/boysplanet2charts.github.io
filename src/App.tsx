@@ -54,9 +54,9 @@ function App() {
   };
 
   const traineesSortedByMostRecentRank = useMemo(() => {
-    const ep5eliminatedTrainees = traineesData.filter(
-      (trainee) => trainee.ep7 === -1
-    );
+    const ep5eliminatedTrainees = traineesData
+      .filter((trainee) => trainee.ep5 > 48)
+      .sort((item1, item2) => item1.ep5 - item2.ep5);
 
     const ep8eliminatedTrainees = traineesData
       .filter((trainee) => trainee.ep8 > 24)

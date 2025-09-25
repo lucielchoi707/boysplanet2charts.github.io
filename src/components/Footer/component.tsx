@@ -27,7 +27,7 @@ export const Footer = () => {
         If you find any errors or inaccuracies, you can open issue on{" "}
         <a
           target="_blank"
-          href="https://github.com/boysplanetcharts/boysplanetcharts.github.io/issues"
+          href="https://github.com/lucielchoi707/boysplanet2charts.github.io"
         >
           Github
         </a>
