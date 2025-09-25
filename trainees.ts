@@ -123,7 +123,7 @@ export const traineesData: ITraineeInfo[] = [
     "star_rank8": 3,
     "ep9": 9,
     "ep10": 10,
-    "ep11": 11,
+    "ep11": 10,
     "eliminated_ep": 11
   },
   {
