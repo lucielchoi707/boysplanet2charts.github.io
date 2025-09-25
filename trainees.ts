@@ -92,8 +92,8 @@ export const traineesData: ITraineeInfo[] = [
     "star_rank8": 3,
     "ep9": 2,
     "ep10": 12,
-    "ep11": -1,
-    "eliminated_ep": -1
+    "ep11": 14,
+    "eliminated_ep": 11
   },
   {
     "name": "CHUEI LI YU",
@@ -123,8 +123,8 @@ export const traineesData: ITraineeInfo[] = [
     "star_rank8": 3,
     "ep9": 9,
     "ep10": 10,
-    "ep11": -1,
-    "eliminated_ep": -1
+    "ep11": 11,
+    "eliminated_ep": 11
   },
   {
     "name": "CHUNG SANG HYEON",
@@ -154,7 +154,7 @@ export const traineesData: ITraineeInfo[] = [
     "star_rank8": 3,
     "ep9": 8,
     "ep10": 8,
-    "ep11": -1,
+    "ep11": 7,
     "eliminated_ep": -1
   },
   {
@@ -278,7 +278,7 @@ export const traineesData: ITraineeInfo[] = [
     "star_rank8": 3,
     "ep9": 20,
     "ep10": 6,
-    "ep11": -1,
+    "ep11": 3,
     "eliminated_ep": -1
   },
   {
@@ -464,8 +464,8 @@ export const traineesData: ITraineeInfo[] = [
     "star_rank8": 3,
     "ep9": 19,
     "ep10": 15,
-    "ep11": -1,
-    "eliminated_ep": -1
+    "ep11": 12,
+    "eliminated_ep": 11
   },
   {
     "name": "JUNG HYUN JUN",
@@ -526,8 +526,8 @@ export const traineesData: ITraineeInfo[] = [
     "star_rank8": 3,
     "ep9": 11,
     "ep10": 16,
-    "ep11": -1,
-    "eliminated_ep": -1
+    "ep11": 16,
+    "eliminated_ep": 11
   },
   {
     "name": "KIM DONG YUN",
@@ -588,7 +588,7 @@ export const traineesData: ITraineeInfo[] = [
     "star_rank8": 3,
     "ep9": 7,
     "ep10": 4,
-    "ep11": -1,
+    "ep11": 4,
     "eliminated_ep": -1
   },
   {
@@ -681,8 +681,8 @@ export const traineesData: ITraineeInfo[] = [
     "star_rank8": 3,
     "ep9": 3,
     "ep10": 13,
-    "ep11": -1,
-    "eliminated_ep": -1
+    "ep11": 13,
+    "eliminated_ep": 11
   },
   {
     "name": "KIM JUN SEO",
@@ -712,7 +712,7 @@ export const traineesData: ITraineeInfo[] = [
     "star_rank8": 3,
     "ep9": 24,
     "ep10": 7,
-    "ep11": -1,
+    "ep11": 8,
     "eliminated_ep": -1
   },
   {
@@ -805,7 +805,7 @@ export const traineesData: ITraineeInfo[] = [
     "star_rank8": 3,
     "ep9": 22,
     "ep10": 3,
-    "ep11": -1,
+    "ep11": 6,
     "eliminated_ep": -1
   },
   {
@@ -836,7 +836,7 @@ export const traineesData: ITraineeInfo[] = [
     "star_rank8": 3,
     "ep9": 4,
     "ep10": 1,
-    "ep11": -1,
+    "ep11": 1,
     "eliminated_ep": -1
   },
   {
@@ -991,8 +991,8 @@ export const traineesData: ITraineeInfo[] = [
     "star_rank8": 3,
     "ep9": 5,
     "ep10": 14,
-    "ep11": -1,
-    "eliminated_ep": -1
+    "ep11": 15,
+    "eliminated_ep": 11
   },
   {
     "name": "PARK JUN IL",
@@ -1332,8 +1332,8 @@ export const traineesData: ITraineeInfo[] = [
     "star_rank8": 3,
     "ep9": 1,
     "ep10": 11,
-    "ep11": -1,
-    "eliminated_ep": -1
+    "ep11": 9,
+    "eliminated_ep": 11
   },
   {
     "name": "YOON MIN",
@@ -1394,8 +1394,8 @@ export const traineesData: ITraineeInfo[] = [
     "star_rank8": 3,
     "ep9": 10,
     "ep10": 9,
-    "ep11": -1,
-    "eliminated_ep": -1
+    "ep11": 11,
+    "eliminated_ep": 11
   },
   {
     "name": "ZHANG JIA HAO",
@@ -1425,7 +1425,7 @@ export const traineesData: ITraineeInfo[] = [
     "star_rank8": 3,
     "ep9": 14,
     "ep10": 5,
-    "ep11": -1,
+    "ep11": 5,
     "eliminated_ep": -1
   },
   {
@@ -1487,7 +1487,7 @@ export const traineesData: ITraineeInfo[] = [
     "star_rank8": 3,
     "ep9": 18,
     "ep10": 2,
-    "ep11": -1,
+    "ep11": 2,
     "eliminated_ep": -1
   },
   {

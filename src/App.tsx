@@ -20,8 +20,9 @@ type EpisodeKey =
   | "ep7"
   | "ep8"
   | "ep9"
-  | "ep10";
-const LATEST_EP_WITH_RANKINGS: EpisodeKey = "ep10";
+  | "ep10"
+  | "ep11";
+const LATEST_EP_WITH_RANKINGS: EpisodeKey = "ep11";
 
 // Inline extension type instead of ITraineeInfoWithImage
 type TraineeWithImage = ITraineeInfo & { image: string };
@@ -48,22 +49,22 @@ function App() {
 
   const renderTraineeEmojiAccordingToRank = (rank: number) => {
     if (rank === 1) return "👑";
-    if (rank > 1 && rank < 10) return "⭐";
+    if (rank > 1 && rank < 9) return "⭐";
     return "";
   };
 
   const traineesSortedByMostRecentRank = useMemo(() => {
     const ep5eliminatedTrainees = traineesData.filter(
-      (trainee) => trainee.ep5 === -1
+      (trainee) => trainee.ep7 === -1
     );
 
     const ep8eliminatedTrainees = traineesData
       .filter((trainee) => trainee.ep8 > 24)
       .sort((item1, item2) => item1.ep8 - item2.ep8);
 
-    // const ep10eliminatedTrainees = traineesData
-    //   .filter((trainee) => trainee.ep10 > 16)
-    //   .sort((item1, item2) => item1.ep10 - item2.ep10);
+    const ep10eliminatedTrainees = traineesData
+      .filter((trainee) => trainee.ep10 > 16)
+      .sort((item1, item2) => item1.ep10 - item2.ep10);
 
     const survivedTrainees = traineesData.filter(
       (trainee) => trainee[LATEST_EP_WITH_RANKINGS] !== -1
@@ -76,7 +77,7 @@ function App() {
 
     return [
       ...survivedTrainees,
-      // ...ep10eliminatedTrainees,
+      ...ep10eliminatedTrainees,
       ...ep8eliminatedTrainees,
       ...ep5eliminatedTrainees,
     ];
@@ -141,9 +142,7 @@ function App() {
       currentTrainee.ep8,
       currentTrainee.ep9,
       currentTrainee.ep10,
-      // -1,
-      // currentTrainee.ep11,
-      // currentTrainee.ep12,
+      currentTrainee.ep11,
     ],
     [currentTrainee]
   );
@@ -168,7 +167,6 @@ function App() {
   ) => {
     const iconColor = isC ? "#e6497c" : "#383d9e";
 
-    // normalize: -1 or undefined/null = missing, else number
     const normalize = (v?: number) => (v == null || v === -1 ? null : v);
 
     const steps = [
@@ -450,9 +448,7 @@ function App() {
                   <th>EP 8</th>
                   <th>EP 9</th>
                   <th>EP 10</th>
-                  {/*
                   <th>EP 11</th>
-                  <th>EP 12</th> */}
                 </tr>
               </thead>
               <tbody>
@@ -523,31 +519,12 @@ function App() {
                         <p>{item.ep10 === -1 ? "-" : item.ep10}</p>
                       </div>
                     </td>
-                    {/*
                     <td>
                       <div className="ranking_div">
-                        {item.ep9 !== -1 &&
-                          generateRankDifference(item.ep8, item.ep9)}
-                        <p>{item.ep9 === -1 ? "-" : item.ep9}</p>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="ranking_div">
-                        {item.ep11 !== -1 &&
-                          generateRankDifference(
-                            item.ep9 !== -1 ? item.ep9 : item.ep8,
-                            item.ep11
-                          )}
+                        {generateRankDifference(item.ep10, item.ep11)}
                         <p>{item.ep11 === -1 ? "-" : item.ep11}</p>
                       </div>
                     </td>
-                    <td>
-                      <div className="ranking_div">
-                        {item.ep12 !== -1 &&
-                          generateRankDifference(item.ep11, item.ep12)}
-                        <p>{item.ep12 === -1 ? "-" : item.ep12}</p>
-                      </div>
-                    </td> */}
                   </tr>
                 ))}
               </tbody>

@@ -26,8 +26,7 @@ export interface ITraineeInfo {
   star_rank8: number;
   ep9: number;
   ep10: number;
-  // NOTE: EP9–EP10 are not out yet; keep them nullable and don’t use them in UI
-  ep11: number | null;
+  ep11: number;
   eliminated_ep: number | null;
 }
 
